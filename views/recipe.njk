@@ -1,0 +1,65 @@
+{% extends 'layout.njk' %}
+    {% block head %}
+        <title>Foodfy - {{recipe.title}}</title>
+    {% endblock %}
+
+    {% block content %}
+
+    <div id="container">
+    
+        <div class="recipes">
+              
+            <div class="recipe">
+                <div class="recipe-info">
+                    <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                    <h1>{{recipe.title}}</h1>
+                    <p>{{recipe.author}}</p>
+                </div>
+
+                <div class="ingredients content-all">
+                    <div class="title-recipe"> 
+                        <h3>Ingredientes</h3>
+                        <p class='button'>ESCONDER</p>
+                    </div>
+                    <div class="content-recipe">
+                        <ul>
+                            {% for ingredient in recipe.ingredients %}
+                                <li>{{ingredient}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="preparation content-all">
+                    <div class="title-recipe"> 
+                        <h3>Modo de preparo</h3>
+                        <p class='button'>MOSTRAR</p>
+                    </div>
+                    <div class="content-recipe hide">
+                        <ul>
+                            {% for preparation in recipe.preparation %}
+                                <li>{{preparation}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% if recipe.information != '' %}
+                <div class="information content-all">
+                    <div class="title-recipe"> 
+                        <h3>Informações adicionais</h3>
+                        <p class='button'>ESCONDER</p>
+                    </div>
+                    <div class="content-recipe">   
+                        <p>{{recipe.information}}</p>
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+
+               
+        </div>
+        
+    </div>
+    <script src="/scripts/recipe.js"></script>
+    
+    {% endblock %}
